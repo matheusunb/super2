@@ -40,7 +40,7 @@
 				$success = $_GET['s'];
 				if ($success == 1) {
 					echo "
-						<div id='divdesaparecer' class='alert alert-success' role='alert'>
+						<div id='divdesaparecer' class='alert alert-success shadow-lg rounded' role='alert'>
 							<b>Sucesso!</b>
 						</div>
 					";
