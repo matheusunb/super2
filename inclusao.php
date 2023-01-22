@@ -29,7 +29,7 @@
 	</header>
 
 	<section>
-		
+	<i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
 		<div class="d-flex justify-content-center align-items-center mt-5"><h2>Adicionar Contato</h2></div>
 		<form class="row g-3 mx-5 mt-5" action="incluir.php" method="POST">
 

@@ -71,14 +71,7 @@
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }
 
-           
-            if (empty($_GET)) {
-              $p = 0;
-            } else {
-              $p = $_GET['p'];
-            }
-
-            $result = mysqli_query($con,"SELECT * FROM contatos LIMIT 0, 2");
+            $result = mysqli_query($con,"SELECT * FROM contatos");
             
             echo "<div class='container'><div class='row justify-content-md-center mt-5'>
             <table class='table table-striped table-dark col-md-6'>
