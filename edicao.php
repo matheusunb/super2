@@ -106,8 +106,8 @@
     <script type="text/javascript">
     $(document).ready(function () {
         setTimeout(function () {
-            $('#divdesaparecer').fadeOut(500);
-        }, 1000);
+            $('#divdesaparecer').fadeOut(1000);
+        }, 2000);
     });
     </script>
 
