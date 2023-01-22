@@ -47,23 +47,41 @@
 				}
 			?>
 
+			<?php
+				$con=mysqli_connect("127.0.0.1","root","","super");
+				// Check connection
+				if (mysqli_connect_errno())
+				{
+				echo "Failed to connect to MySQL: " . mysqli_connect_error();
+				}
+
+				$id = $_GET['id'];
+				$result = mysqli_query($con,"SELECT * FROM contatos WHERE usuario_id = " . $id);
+				$row = mysqli_fetch_array($result);
+				$nome = $row['nome'];
+				$observacao = $row['observacao'];
+			?>
+
 			<div class="col-md-4">
 				<label for="" class="form-label">ID</label>
 				<?php
-					$id = $_GET['id'];
 					echo "<input name='id' type='text' class='form-control' id='' placeholder='' value='" . $id . "' readonly>";
 				?>
 			</div>
 
 			<div class="col-md-4">
 				<label for="" class="form-label">Nome</label>
-				<input name="nome" type="text" class="form-control" id="" placeholder="" value="Nome novo" required>
+				<?php
+					echo "<input name='nome' type='text' class='form-control' id='' placeholder='' value='" . $nome . "' required>"
+				?>
 			</div>
 
 			<div class="col-12">
 				<div class="col-8">
 					<label for="" class="form-label">Observação</label>
-					<textarea name="observacao" class="form-control" placeholder="Escreva a observação aqui..." id="floatingTextarea2" style="height: 100px"></textarea>
+					<?php
+						echo "<textarea name='observacao' class='form-control' placeholder='Escreva a observação aqui...' id='floatingTextarea2' style='height: 100px'>" . $observacao . "</textarea>"
+					?>
 				</div>
 			</div>
 			
@@ -92,7 +110,7 @@
 					<!-- Modal footer -->
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-primary" type="submit">Ok</button>
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
 					</div>
 
 					</div>

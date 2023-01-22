@@ -78,10 +78,15 @@
               $p = $_GET['p'];
             }
 
-            $result = mysqli_query($con,"SELECT * FROM contatos LIMIT 0, 2");
-            
+            $total_reg = 5;
+            $inicial = $p*$total_reg;
+            $result = mysqli_query($con,"SELECT * FROM contatos LIMIT " . $inicial . ", " . $total_reg);
+            $todos_registros = mysqli_query($con,"SELECT * FROM contatos");
+            $total = mysqli_num_rows($todos_registros);
+            $paginas = $total / $total_reg;
+
             echo "<div class='container'><div class='row justify-content-md-center mt-5'>
-            <table class='table table-striped table-dark col-md-6'>
+            <table class='table table-striped table-light col-md-6'>
                 <thead>
                     <tr>
                         <th scope='col'>#</th>
@@ -105,7 +110,59 @@
                 echo " <a href='edicao.php?s=&id=" . $row['usuario_id'] . "'><button type='button' class='btn btn-warning'>Editar</button></a>";
                 echo "</tr>";
             }
-            echo "</table></div></div>";            
+            echo "</table></div>";
+            
+            if ($p <= 1){
+              $p1 = 0;
+              $p2 = 1;
+              $p3 = 2;
+              $p4 = 3;
+            } else{
+              $p1 = $p - 1;
+              $p2 = $p1 + 1;
+              $p3 = $p2 + 1;
+              $p4 = $p3 + 1;
+            }
+            
+            $previous = $p - 1;
+
+            if ($previous < 0){
+              $previous = 0;
+            }
+
+            $next = $p + 1;            
+
+            echo "
+            <div class='row'>
+              <nav aria-label='Page navigation example'>
+                <ul class='pagination'>
+                  <li class='page-item'>
+                    <a class='page-link' href='index.php?p=" . $previous . "' aria-label='Previous'>
+                      <span aria-hidden='true'>&laquo;</span>
+                    </a>
+                  </li>
+                  <li class='page-item'><a class='page-link' href='index.php.?p=" . $p1 . "'>" . $p2 . "</a></li>
+                  <li class='page-item'><a class='page-link' href='index.php.?p=" . $p2 . "'>" . $p3  . "</a></li>";
+            
+            if ($total - $inicial < $total_reg){
+              $p3 = $p;
+              $p4 = $p3 + 2;
+              $next = $p;
+            }
+            
+            echo "
+                  <li class='page-item'><a class='page-link' href='index.php.?p=" . $p3 . "' disabled>" . $p4 . "</a></li>
+                  <li class='page-item'>
+                    <a class='page-link' href='index.php?p=" . $next . "' aria-label='Next'>
+                      <span aria-hidden='true'>&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            ";
+
+            echo "</div>";            
 
             mysqli_close($con);
         ?>
