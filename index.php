@@ -156,12 +156,12 @@
                   <li class='page-item " . $active1 . "'><a class='page-link' href='index.php.?p=" . $p1 . "'>" . $p2 . "</a></li>
                   <li class='page-item " . $active2 . "'><a class='page-link' href='index.php.?p=" . $p2 . "'>" . $p3  . "</a></li>";
             
-            if ($total - $inicial < $total_reg){
-              $p3 = $p;
-              $p4 = $p3 + 2;
-              $next = $p;
-              $class_n = 'disabled';
-            }
+                  if ($total - $inicial < $total_reg){
+                    $p3 = $p;
+                    $p4 = $p3 + 2;
+                    $next = $p;
+                    $class_n = 'disabled';
+                  }
             
             echo "
                   <li class='page-item " . $class_n . "'><a class='page-link' href='index.php.?p=" . $p3 . "'>" . $p4 . "</a></li>
