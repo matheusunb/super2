@@ -1,3 +1,0 @@
-Com o XAMPP instalado, copie a pasta "super" para "C:\xampp\htdocs\".
-No phpMyAdmin em "http://localhost/phpmyadmin/" importe o aqrquivo "dump.sql" e o banco de dados com a tabela "contatos" estará pronta para ser usado pela aplicação web.
-Em "http://localhost/super/" a página estará disponível.

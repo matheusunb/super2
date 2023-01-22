@@ -25,6 +25,6 @@ if($conexao->query($sql) == TRUE) {
 
 $conexao->close();
 
-header('Location: edicao.php?m=1&id=' . $id);
+header('Location: edicao.php?s=1&id=' . $id);
 exit;
 ?>
