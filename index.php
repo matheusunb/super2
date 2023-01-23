@@ -117,31 +117,39 @@
               $p2 = 1;
               $p3 = 2;
               $p4 = 3;
-              $class_p = 'disabled';
-              $class_n = '';
+              if ($p == 0){
+                $class_p = 'disabled';
+              } else{
+                $class_p = '';
+              }
             } else{
               $p1 = $p - 1;
               $p2 = $p1 + 1;
               $p3 = $p2 + 1;
               $p4 = $p3 + 1;
               $class_p = '';
-              $class_n = '';
             }
             
+            //Previous e Next
             $previous = $p - 1;
-
             if ($previous < 0){
               $previous = 0;
             }
-
             $next = $p + 1;
             
+            //Actives
             if ($p == 0){
-              $active1 = 'active';
-              $active2 = '';
+              $class1 = 'active';
+              $class2 = '';
             } else {
-              $active1 = '';
-              $active2 = 'active';
+              $class1 = '';
+              $class2 = 'active';
+            }
+
+            //Disables
+            if ($total <= $total_reg){
+              $class2 = 'disabled';
+              $class_n = 'disabled';
             }
 
             echo "
@@ -153,14 +161,16 @@
                       <span aria-hidden='true'>&laquo;</span>
                     </a>
                   </li>
-                  <li class='page-item " . $active1 . "'><a class='page-link' href='index.php.?p=" . $p1 . "'>" . $p2 . "</a></li>
-                  <li class='page-item " . $active2 . "'><a class='page-link' href='index.php.?p=" . $p2 . "'>" . $p3  . "</a></li>";
+                  <li class='page-item " . $class1 . "'><a class='page-link' href='index.php.?p=" . $p1 . "'>" . $p2 . "</a></li>
+                  <li class='page-item " . $class2 . "'><a class='page-link' href='index.php.?p=" . $p2 . "'>" . $p3  . "</a></li>";
             
-                  if ($total - $inicial < $total_reg){
-                    $p3 = $p;
-                    $p4 = $p3 + 2;
+                  if ($total - $inicial <= $total_reg){
+                    $p3 = $p + 1;
+                    $p4 = $p3 + 1;
                     $next = $p;
                     $class_n = 'disabled';
+                  } else {
+                    $class_n = '';
                   }
             
             echo "
